@@ -6,31 +6,32 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *node;
+	listint_t *noeud;
 
 	if (list == NULL || (*list)->next == NULL)
 		return;
-	node = (*list)->next;
-	while (node)
+	noeud = (*list)->next;
+	while (noeud)
 	{
-		while ((node->prev) && (node->prev->n > node->n))
+		while ((noeud->prev) && (noeud->prev->n > noeud->n))
 		{
-			node = swap_node(node, list);
+			noeud = swap_node_func(noeud, list);
 			print_list(*list);
 		}
-		node = node->next;
+		noeud = noeud->next;
 	}
 }
+
+
 /**
- *swap_node - swap a node for his previous one
+ *swap_node_func - swap a node for his previous one
  *@node: node
  *@list: node list
  *Return: return a pointer to a node which was enter it
  */
-listint_t *swap_node(listint_t *node, listint_t **list)
+listint_t *swap_node_func(listint_t *noeud, listint_t **list)
 {
-	listint_t *back = node->prev, *current = node;
-	/*NULL, 19, 48, 9, 71, 13, NULL*/
+	listint_t *back = noeud->prev, *current = noeud;
 
 	back->next = current->next;
 	if (current->next)
